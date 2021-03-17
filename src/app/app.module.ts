@@ -8,6 +8,11 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { ReadingModule } from './reading/reading.module';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -17,6 +22,9 @@ import { ReadingModule } from './reading/reading.module';
     ReadingModule,
     AuthModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { delay, tap } from 'rxjs/operators';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,10 +9,14 @@ export class AuthService {
   isLoggedIn = false;
   redirectUrl: string;
 
-  login(): Observable<boolean> {
-    return of(true).pipe(
-      delay(1000),
-      tap(() => (this.isLoggedIn = true))
+  constructor(public afAuth: AngularFireAuth) {}
+
+  loginFirebase(email: string, password: string) {
+    return from(
+      this.afAuth
+        .signInWithEmailAndPassword(email, password)
+        .then(() => (this.isLoggedIn = true))
+        .catch((error) => console.log(error))
     );
   }
 
