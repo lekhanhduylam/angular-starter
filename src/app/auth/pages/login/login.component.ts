@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services';
+import { AuthService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-login',
@@ -25,10 +25,14 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     const {email, password} = this.loginForm.value
-    this.authService.loginFirebase(email, password).subscribe(() => {
-      if (this.authService.isLoggedIn) {
-        const redirectUrl = '/admin';
-        this.router.navigate([redirectUrl]);
+    this.authService.loginFirebase(email, password).subscribe((user) => {
+      if (user) {
+        console.log(
+          '🚀 ~ file: login.component.ts ~ line 30 ~ LoginComponent ~ this.authService.loginFirebase ~ user',
+          user
+        );
+
+        this.router.navigate(['/admin']);
       }
     });
   }

@@ -11,8 +11,7 @@ import {
   Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../services';
-
+import { AuthService } from 'src/app/shared/services';
 @Injectable({
   providedIn: 'root',
 })
@@ -52,7 +51,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   checkLogin(url: string): boolean {
-    if (this.authService.isLoggedIn) {
+    if (this.authService.isLoggedIn()) {
       return true;
     }
 
