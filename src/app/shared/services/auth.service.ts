@@ -63,11 +63,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    const user: User = JSON.parse(localStorage.getItem('user'));
-    console.log(
-      '🚀 ~ file: auth.service.ts ~ line 67 ~ AuthService ~ isLoggedIn ~ user',
-      user
-    );
-    return user != null;
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user !== null && user.uid !== false ? true : false;
   }
 }
