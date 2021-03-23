@@ -9,22 +9,25 @@ import { AuthService } from 'src/app/shared/services';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private fb: FormBuilder, public authService: AuthService, public router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    public authService: AuthService,
+    public router: Router
+  ) {}
 
   loginForm = this.fb.group({
     email: ['', Validators.email],
-    password: ['', Validators.required]
-  })
+    password: ['', Validators.required],
+  });
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
-    this.login()
+    this.login();
   }
 
   login(): void {
-    const {email, password} = this.loginForm.value
+    const {  email, password  } = this.loginForm.value;
     this.authService.loginFirebase(email, password).subscribe((user) => {
       if (user) {
         console.log(

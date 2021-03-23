@@ -1,8 +1,8 @@
 <div class="row align-center">
     <div class="col-1 col-md-3 col-sm-2"></div>
     <div class="col-10 col-md-6 col-sm-8 border border-primary p-3">
-        <h4 class="text-primary">Sign in</h4>
-        <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <h4 class="text-primary">Sign up</h4>
+        <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
             <div class="form-group">
                 <label for="email">Email address</label>
                 <input id="email" class="form-control" placeholder="Enter email" aria-describedby="emailHelp"
@@ -15,8 +15,12 @@
                 <input id="password" class="form-control" placeholder="Password" type="password"
                     formControlName="password" required>
             </div>
-            <button (click)="login()" class="btn btn-primary">Submit</button>
-            <a routerLink="/signUp">Sign up</a>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm password</label>
+                <input formControlName="confirmPassword" type="password" class="form-control"
+                    placeholder="Confirm password">
+            </div>
+            <button (click)="signUp()" class="btn btn-primary">Submit</button>
         </form>
     </div>
     <div class="col-1 col-md-3 col-sm-2"></div>
