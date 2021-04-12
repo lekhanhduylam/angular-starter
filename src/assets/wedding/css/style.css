@@ -320,8 +320,12 @@ h1, h2, h3, h4, h5, h6, figure {
     height: 600px;
   }
 }
+.display-t {
+  margin-top: 15%;
+}
 .fh5co-cover .display-t,
 .fh5co-cover .display-tc {
+  /* margin-top: 50px; */
   height: 900px;
   display: table;
   width: 100%;
